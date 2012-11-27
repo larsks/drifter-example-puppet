@@ -1,4 +1,6 @@
 class backend {
+  include webserver
+
   file { '/usr/local/sbin/register-backend':
     content => template('backend/register-backend'),
     mode    => 0755,
