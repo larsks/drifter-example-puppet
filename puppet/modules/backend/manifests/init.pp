@@ -5,8 +5,10 @@ class backend {
   }
 
   exec { 'register backend':
-    require => File['/usr/local/sbin/register-backend'],
-    require => Service['avahi-daemon'],
+    require => [
+      File['/usr/local/sbin/register-backend'],
+      Service['avahi-daemon'],
+    ],
     command => '/usr/local/sbin/register-backend',
   }
 }
