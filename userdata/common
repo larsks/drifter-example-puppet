@@ -23,7 +23,4 @@
     puppet apply --node_terminus=exec \
       --external_nodes=/var/lib/cloud-init-ecn/cloud-init-ecn.py \
       --modulepath=puppet/modules puppet/site.pp
-- type: text/x-shellscript
-  content: |
-    #!/bin/sh
-    echo this.is.a.password | passwd --stdin root
+
