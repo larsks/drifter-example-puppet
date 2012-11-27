@@ -1,0 +1,13 @@
+#cloud-config-archive
+- type: text/cloud-config
+  content: |
+    apt_upgrade: true
+    packages:
+    - puppet
+    - git-core
+    - ruby-json
+- type: text/x-shellscript
+  content: |
+    #!/bin/sh
+    git clone git://github/larsks/drifter-example-cloud-init.git
+
