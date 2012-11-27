@@ -1,7 +1,10 @@
 class dynproxy {
   include git
+
+  $dynproxy_dir = '/var/lib/dynproxy'
+  $dynproxy_db = '/var/cache/apache2/dynproxy.db'
   
-  git::repository { '/var/lib/dynproxy':
+  git::repository { $dynproxy_dir:
     url => 'git://github.com/larsks/dynproxy-http.git',
     notify => Service['apache2']
   }
@@ -17,10 +20,16 @@ class dynproxy {
     notify => Service['apache2']
   }
 
-  file { '/var/cache/apache2/dynproxy.db':
-    owner => 'www-data',
-    group => 'www-data',
-    mode  => 0644,
+  exec { 'init dynproxy db':
+    command => "rm -f $dynproxy_db && python $dynproxy_dir/dynproxy/initdb.py",
+    notify => Service['apache2']
+  }
+
+  file { $dynproxy_db:
+    owner   => 'www-data',
+    group   => 'www-data',
+    mode    => 0644,
+    require => Exec['init dynproxy db'],
   }
 }
 
