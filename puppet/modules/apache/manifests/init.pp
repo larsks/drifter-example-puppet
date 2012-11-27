@@ -5,7 +5,8 @@ class apache {
         'absent' => 'absent',
         default  => 'link',
       },
-      target => "../mods-available/$name",
+      target  => "../mods-available/$name",
+      require => Package['apache2'],
     }
   }
 }
