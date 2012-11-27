@@ -16,5 +16,11 @@ class dynproxy {
     mode   => 0755,
     notify => Service['apache2']
   }
+
+  file { '/var/cache/apache2/dynproxy.db':
+    owner => 'www-data',
+    group => 'www-data',
+    mode  => 0644,
+  }
 }
 
