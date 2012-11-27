@@ -1,0 +1,5 @@
+#!/bin/sh
+
+curl --silent -X POST \
+  'http://<%= master_address %>/proxy/backend/<%= macaddress %>'
+
