@@ -5,7 +5,7 @@ drifter_user="<%= drifter_user %>"
 master_name="master-${drifter_project}-${drifter_user}"
 
 while ! [ "$master_ip" ] ; do
-	master_ip=$(avahi-browse -rptf _http._tcp | awk -F';' -vmaster_name="$master_name" '
+	master_ip=$(avahi-browse -rptf _http._tcp | timeout 5 awk -F';' -vmaster_name="$master_name" '
 		$1 == "=" && $4 == master_name {print $8}
 		')
 done
