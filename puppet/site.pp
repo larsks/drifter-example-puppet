@@ -1,4 +1,7 @@
 node default {
+  Exec {
+    path    => [ '/bin', '/usr/bin', '/usr/local/bin' ],
+  }
 }
 
 node 'master' inherits default {

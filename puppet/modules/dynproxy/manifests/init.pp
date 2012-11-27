@@ -9,6 +9,13 @@ class dynproxy {
     notify => Service['apache2']
   }
 
+  exec { 'create dynproxy virtualenv':
+    cwd     => $dynproxy_dir,
+    command => 'sh create-virtenv.sh',
+    require => Git::Repository[$dynproxy_dir],
+    notify => Service['apache2']
+  }
+
   file { '/etc/dynproxy.yml':
     source => 'puppet:///modules/dynproxy/dynproxy.yml',
     notify => Service['apache2']
@@ -22,7 +29,6 @@ class dynproxy {
 
   exec { 'init dynproxy db':
     command => "rm -f $dynproxy_db && python $dynproxy_dir/dynproxy/initdb.py",
-    path    => [ '/bin', '/usr/bin', '/usr/local/bin' ],
     notify  => Service['apache2']
   }
 
