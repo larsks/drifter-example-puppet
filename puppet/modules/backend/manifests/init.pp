@@ -9,5 +9,10 @@ class backend {
     require => Service['avahi-daemon'],
     command => '/usr/local/sbin/register-backend',
   }
+
+  file { '/var/www/whoami.html':
+    content => template('backend/whoami.html'),
+    mode    => 0644,
+  }
 }
 
