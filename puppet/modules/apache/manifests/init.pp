@@ -7,6 +7,7 @@ class apache {
       },
       target  => "../mods-available/$name",
       require => Package['apache2'],
+      notify  => Service['apache2']
     }
   }
 }

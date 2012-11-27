@@ -13,6 +13,7 @@ class wsgiserver {
 
   package { $packages:
     ensure => installed,
+    notify => Service['apache2']
   }
 
   apache::module { $modules: }

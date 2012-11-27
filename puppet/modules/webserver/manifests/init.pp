@@ -16,6 +16,11 @@ class webserver {
     ensure => installed,
   }
 
+  service { 'apache2':
+    ensure  => running,
+    enabled => true,
+  }
+
   apache::module { $modules: }
 }
 
