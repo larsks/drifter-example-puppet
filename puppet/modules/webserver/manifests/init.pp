@@ -17,8 +17,8 @@ class webserver {
   }
 
   service { 'apache2':
-    ensure  => running,
-    enabled => true,
+    ensure => running,
+    enable => true,
   }
 
   apache::module { $modules: }
