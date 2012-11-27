@@ -9,5 +9,8 @@
 - type: text/x-shellscript
   content: |
     #!/bin/sh
-    git clone git://github/larsks/drifter-example-cloud-init.git
+    mkdir -p /var/lib/drifter
+    cd /var/lib/drifter
+    git clone git://github.com/larsks/drifter-example-cloud-init.git config
+    puppet apply --modulepath=config/puppet/modules config/puppet/node.pp
 
