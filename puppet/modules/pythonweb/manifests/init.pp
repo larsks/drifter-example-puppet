@@ -1,8 +1,7 @@
 class pythonweb {
   $packages = [
-#    'python-sqlalchemy',
-#    'python-bottle',
-#    'python-yaml',
+    'python-sqlalchemy',
+    'python-yaml',
     'python-virtualenv',
   ]
 
