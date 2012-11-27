@@ -3,6 +3,7 @@ class pythonweb {
     'python-sqlalchemy',
     'python-bottle',
     'python-yaml',
+    'python-virtualenv',
   ]
 
   package { $packages:

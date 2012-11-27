@@ -12,7 +12,10 @@ class dynproxy {
   exec { 'create dynproxy virtualenv':
     cwd     => $dynproxy_dir,
     command => 'sh create-virtenv.sh',
-    require => Git::Repository[$dynproxy_dir],
+    require => [
+      Git::Repository[$dynproxy_dir],
+      Package['python-virtualenv'],
+    ],
     notify => Service['apache2']
   }
 
