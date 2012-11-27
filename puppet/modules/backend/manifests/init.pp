@@ -4,11 +4,9 @@ class backend {
     mode    => 0755,
   }
 
-  exec { 'register backend':
-    require => [
-      File['/usr/local/sbin/register-backend'],
-      Service['avahi-daemon'],
-    ],
+  # Update master once/minute.
+  cron { 'register backend':
+    require => Service['avahi-daemon'],
     command => '/usr/local/sbin/register-backend',
   }
 }

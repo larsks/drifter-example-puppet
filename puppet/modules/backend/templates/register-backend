@@ -4,9 +4,6 @@ drifter_project="<%= drifter_project %>"
 drifter_user="<%= drifter_user %>"
 master_name="master-${drifter_project}-${drifter_user}"
 
-(
-set -x
-
 while ! [ "$master_ip" ] ; do
 	master_ip=$(timeout 5 avahi-browse -rptf _http._tcp | awk -F';' -vmaster_name="$master_name" '
 		$1 == "=" && $4 == master_name {print $8}
@@ -15,5 +12,5 @@ done
 
 curl --silent -X POST \
 	"http://$master_ip/proxy/backend/$(facter macaddress)"
-) > /var/log/register-backend.log 2>&1
+
 
