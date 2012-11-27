@@ -22,7 +22,8 @@ class dynproxy {
 
   exec { 'init dynproxy db':
     command => "rm -f $dynproxy_db && python $dynproxy_dir/dynproxy/initdb.py",
-    notify => Service['apache2']
+    path    => [ '/bin', '/usr/bin', '/usr/local/bin' ],
+    notify  => Service['apache2']
   }
 
   file { $dynproxy_db:
