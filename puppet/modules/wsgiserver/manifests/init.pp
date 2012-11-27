@@ -1,15 +1,14 @@
-class webserver {
+class wsgiserver {
   include apache
+  include webserver
 
   $packages = [
-    'apache2',
+    'libapache2-mod-wsgi',
   ]
 
   $modules = [
-    'rewrite.load',
-    'proxy.conf',
-    'proxy.load',
-    'proxy_http.load',
+    'wsgi.load',
+    'wsgi.conf',
   ]
 
   package { $packages:

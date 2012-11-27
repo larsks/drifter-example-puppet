@@ -12,5 +12,5 @@
     mkdir -p /var/lib/drifter
     cd /var/lib/drifter
     git clone git://github.com/larsks/drifter-example-cloud-init.git config
-    puppet apply --modulepath=config/puppet/modules config/puppet/node.pp
+    puppet apply --modulepath=config/puppet/modules config/puppet/site.pp
 
