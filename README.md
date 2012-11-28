@@ -76,11 +76,11 @@ The last section is another shell script that runs Puppet, using
 `cloud-init-ecn` as the external node classifier and the contents of
 the `puppet` directory as the configuration.
 
-- type: text/x-shellscript
-  content: |
-    #!/bin/sh
-    cd /var/lib/drifter
-    puppet apply --node_terminus=exec \
-      --external_nodes=/var/lib/cloud-init-ecn/cloud-init-ecn.py \
-      --modulepath=puppet/modules puppet/site.pp
+    - type: text/x-shellscript
+      content: |
+        #!/bin/sh
+        cd /var/lib/drifter
+        puppet apply --node_terminus=exec \
+          --external_nodes=/var/lib/cloud-init-ecn/cloud-init-ecn.py \
+          --modulepath=puppet/modules puppet/site.pp
 
